@@ -215,126 +215,131 @@ color:white;
 
 
 /* =====================
-   KUPU KUPU
+   BUTTERFLY REAL MOTION
 ===================== */
 
 
 .butterfly{
-
 position:fixed;
-
 z-index:9998;
-
 pointer-events:none;
 
-user-select:none;
+transform-origin:center;
 
+animation-timing-function:linear;
+animation-iteration-count:infinite;
 }
 
 
 
-/* kecil */
+/* GERAK SAYAP */
+
+.butterfly{
+animation-name:fly;
+}
+
+
+.butterfly::after{
+content:"";
+}
+
+
 
 .bf1{
-
 width:65px;
-
 left:-100px;
-
 top:70%;
 
 animation:
-fly1 15s linear infinite;
-
+fly1 14s linear infinite,
+flap .35s ease-in-out infinite alternate;
 }
 
 
-
-/* sedang */
 
 .bf2{
-
 width:110px;
-
 right:-120px;
-
-top:30%;
+top:25%;
 
 animation:
-fly2 22s linear infinite;
+fly2 20s linear infinite,
+flap .4s ease-in-out infinite alternate;
 
-animation-delay:3s;
-
+animation-delay:2s;
 }
 
 
 
-/* besar */
-
 .bf3{
-
 width:160px;
-
 left:-150px;
-
 top:15%;
 
 animation:
-fly3 28s linear infinite;
+fly3 26s linear infinite,
+flap .5s ease-in-out infinite alternate;
 
-animation-delay:6s;
+animation-delay:5s;
+}
+
+
+
+/* KEPAKAN */
+
+@keyframes flap{
+
+
+from{
+
+transform:
+scaleX(1)
+rotate(-5deg);
 
 }
 
 
+
+to{
+
+transform:
+scaleX(.75)
+rotate(5deg);
+
+}
+
+}
+
+
+
+/* JALUR TERBANG */
 
 
 @keyframes fly1{
 
 
 0%{
-
-transform:
-translate(0,0)
-rotate(10deg);
-
+translate:0 0;
 opacity:0;
-
 }
-
 
 
 10%{
-
 opacity:1;
-
 }
-
 
 
 50%{
-
-transform:
-translate(55vw,-30vh)
-rotate(-15deg);
-
+translate:55vw -30vh;
 }
-
 
 
 100%{
-
-transform:
-translate(120vw,-5vh)
-rotate(15deg);
-
+translate:120vw -5vh;
 opacity:0;
-
 }
 
 }
-
-
 
 
 
@@ -342,45 +347,27 @@ opacity:0;
 
 
 0%{
-
-transform:
-translate(0,0)
-rotate(-10deg);
-
+translate:0 0;
 opacity:0;
-
 }
 
 
 10%{
-
 opacity:1;
-
 }
 
 
 50%{
-
-transform:
-translate(-45vw,25vh)
-rotate(20deg);
-
+translate:-50vw 25vh;
 }
 
 
 100%{
-
-transform:
-translate(-120vw,-20vh)
-rotate(-15deg);
-
+translate:-120vw -20vh;
 opacity:0;
-
 }
 
 }
-
-
 
 
 
@@ -388,58 +375,27 @@ opacity:0;
 
 
 0%{
-
-transform:
-translate(0,0)
-rotate(5deg);
-
+translate:0 0;
 opacity:0;
-
 }
-
 
 
 10%{
-
 opacity:1;
-
 }
-
 
 
 50%{
-
-transform:
-translate(60vw,40vh)
-rotate(-20deg);
-
+translate:60vw 40vh;
 }
-
 
 
 100%{
-
-transform:
-translate(130vw,10vh)
-rotate(10deg);
-
+translate:130vw 10vh;
 opacity:0;
-
 }
 
 }
-
-
-
-</style>
-
-
-</head>
-
-
-
-<body>
-
 
 
 <!-- KUPU KUPU -->
