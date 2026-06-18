@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,12 +9,8 @@
 <title>Undangan Pernikahan Alya & Wahyu</title>
 
 
-<!-- THUMBNAIL WA -->
-
 <meta property="og:title" content="Undangan Pernikahan Alya & Wahyu">
 <meta property="og:description" content="Kami mengundang Anda untuk hadir pada hari bahagia kami">
-<meta property="og:image" content="https://alya-wahyu-wedding.github.io/wedding-invitation/thumbnail.png">
-<meta property="og:type" content="website">
 
 
 <style>
@@ -37,7 +33,6 @@ font-family:Georgia,serif;
 
 
 /* COVER */
-
 
 #cover{
 
@@ -83,8 +78,7 @@ cursor:pointer;
 
 
 
-/* ISI */
-
+/* CONTENT */
 
 #content{
 
@@ -95,9 +89,9 @@ max-width:700px;
 
 margin:auto;
 
-background:white;
-
 overflow:hidden;
+
+background:white;
 
 }
 
@@ -107,9 +101,9 @@ overflow:hidden;
 
 display:flex;
 
-width:600%;
+width:100%;
 
-transition:.5s ease;
+transition:transform .5s ease;
 
 }
 
@@ -117,15 +111,18 @@ transition:.5s ease;
 
 .page{
 
+flex:0 0 100%;
+
 width:100%;
-flex-shrink:0;
 
 }
+
 
 
 .page img{
 
 width:100%;
+
 display:block;
 
 }
@@ -133,7 +130,8 @@ display:block;
 
 
 
-/* TOMBOL NAV */
+
+/* NAV */
 
 .nav{
 
@@ -169,9 +167,8 @@ font-size:30px;
 
 margin:5px;
 
-box-shadow:0 4px 10px #0005;
-
 }
+
 
 
 
@@ -252,15 +249,15 @@ color:white;
 
 <!-- COVER -->
 
-
 <div id="cover">
 
 
 <img src="cover.jpg" class="cover-img">
 
 
-
-<div class="btn-buka" onclick="bukaUndangan()"></div>
+<div class="btn-buka"
+onclick="bukaUndangan()">
+</div>
 
 
 
@@ -277,13 +274,14 @@ target="_blank">
 
 
 
-<!-- UNDANGAN -->
 
+<!-- ISI -->
 
 <div id="content">
 
 
 <div class="book" id="book">
+
 
 
 <div class="page">
@@ -326,14 +324,20 @@ target="_blank">
 
 
 
-<!-- NAV -->
+
+<!-- tombol halaman -->
 
 <div class="nav" id="nav">
 
 
-<button onclick="prevPage()">‹</button>
+<button onclick="prevPage()">
+‹
+</button>
 
-<button onclick="nextPage()">›</button>
+
+<button onclick="nextPage()">
+›
+</button>
 
 
 </div>
@@ -341,8 +345,6 @@ target="_blank">
 
 
 
-
-<!-- FLOAT -->
 
 
 <div class="floating">
@@ -375,10 +377,12 @@ HOME
 
 
 
+
 <script>
 
 
-const musik=document.getElementById("musik");
+const musik =
+document.getElementById("musik");
 
 
 let halaman=0;
@@ -390,10 +394,12 @@ function bukaUndangan(){
 
 document.getElementById("cover").style.display="none";
 
+
 document.getElementById("content").style.display="block";
 
 
 document.querySelector(".floating").style.display="flex";
+
 
 document.getElementById("nav").style.display="block";
 
@@ -403,34 +409,29 @@ musik.play().catch(()=>{});
 
 
 
-window.scrollTo(0,0);
-
-
-
 }
-
-
 
 
 
 function nextPage(){
 
 
-if(halaman<5){
+if(halaman < 5){
 
 
 halaman++;
 
 
-document.getElementById("book").style.transform=
+document.getElementById("book").style.transform =
 
-"translateX(-"+(halaman*100/6)+"%)";
+"translateX(-"+(halaman*100)+"%)";
+
+
+}
 
 
 }
 
-
-}
 
 
 
@@ -438,22 +439,21 @@ document.getElementById("book").style.transform=
 function prevPage(){
 
 
-if(halaman>0){
+if(halaman > 0){
 
 
 halaman--;
 
 
-document.getElementById("book").style.transform=
+document.getElementById("book").style.transform =
 
-"translateX(-"+(halaman*100/6)+"%)";
-
-
-}
+"translateX(-"+(halaman*100)+"%)";
 
 
 }
 
+
+}
 
 
 
@@ -472,6 +472,7 @@ document.querySelector(".floating").style.display="none";
 
 
 document.getElementById("nav").style.display="none";
+
 
 
 halaman=0;
