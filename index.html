@@ -12,6 +12,11 @@
 <meta property="og:title" content="Undangan Pernikahan Alya & Wahyu">
 <meta property="og:description" content="Kami mengundang Anda untuk hadir pada hari bahagia kami">
 
+<meta property="og:image" content="https://alya-wahyu-wedding.github.io/wedding-invitation/thumbnail.png">
+
+<meta property="og:type" content="website">
+
+
 
 <style>
 
@@ -23,6 +28,7 @@ box-sizing:border-box;
 }
 
 
+
 body{
 
 background:#f5f5f5;
@@ -32,33 +38,46 @@ font-family:Georgia,serif;
 }
 
 
+
 /* COVER */
+
 
 #cover{
 
 position:relative;
+
 width:100%;
+
 max-width:700px;
+
 margin:auto;
 
 }
 
 
+
 .cover-img{
 
 width:100%;
+
 display:block;
 
 }
 
 
+
 .btn-buka{
 
 position:absolute;
+
 left:22%;
+
 bottom:19%;
+
 width:18%;
+
 height:6%;
+
 cursor:pointer;
 
 }
@@ -68,23 +87,31 @@ cursor:pointer;
 .btn-peta{
 
 position:absolute;
+
 right:22%;
+
 bottom:19%;
+
 width:18%;
+
 height:6%;
+
 cursor:pointer;
 
 }
 
 
 
-/* CONTENT */
+
+
+/* ISI */
 
 #content{
 
 display:none;
 
 width:100%;
+
 max-width:700px;
 
 margin:auto;
@@ -103,7 +130,7 @@ display:flex;
 
 width:100%;
 
-transition:transform .5s ease;
+transition:transform .55s ease;
 
 }
 
@@ -131,48 +158,9 @@ display:block;
 
 
 
-/* NAV */
-
-.nav{
-
-position:fixed;
-
-bottom:20px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-display:none;
-
-z-index:9999;
-
-}
 
 
-
-.nav button{
-
-width:55px;
-height:55px;
-
-border:none;
-border-radius:50%;
-
-background:#6d0015;
-
-color:white;
-
-font-size:30px;
-
-margin:5px;
-
-}
-
-
-
-
-/* FLOAT */
+/* FLOAT BUTTON */
 
 
 .floating{
@@ -198,9 +186,11 @@ z-index:9999;
 .float-btn{
 
 width:65px;
+
 height:65px;
 
 border:none;
+
 border-radius:50%;
 
 font-weight:bold;
@@ -212,6 +202,7 @@ font-weight:bold;
 .home{
 
 background:#6d0015;
+
 color:white;
 
 }
@@ -221,6 +212,7 @@ color:white;
 .peta{
 
 background:#d4af37;
+
 color:white;
 
 }
@@ -231,6 +223,7 @@ color:white;
 
 
 </head>
+
 
 
 
@@ -247,6 +240,7 @@ color:white;
 
 
 
+
 <!-- COVER -->
 
 <div id="cover">
@@ -255,14 +249,19 @@ color:white;
 <img src="cover.jpg" class="cover-img">
 
 
+
 <div class="btn-buka"
+
 onclick="bukaUndangan()">
+
 </div>
 
 
 
 <a class="btn-peta"
+
 href="https://www.google.com/maps/search/?api=1&query=Royal+Ambarrukmo+Yogyakarta"
+
 target="_blank">
 
 </a>
@@ -275,13 +274,12 @@ target="_blank">
 
 
 
-<!-- ISI -->
+<!-- HALAMAN -->
 
 <div id="content">
 
 
 <div class="book" id="book">
-
 
 
 <div class="page">
@@ -325,29 +323,13 @@ target="_blank">
 
 
 
-<!-- tombol halaman -->
-
-<div class="nav" id="nav">
 
 
-<button onclick="prevPage()">
-‹
-</button>
-
-
-<button onclick="nextPage()">
-›
-</button>
-
-
-</div>
-
-
-
-
+<!-- FLOAT -->
 
 
 <div class="floating">
+
 
 
 <button class="float-btn peta"
@@ -378,6 +360,7 @@ HOME
 
 
 
+
 <script>
 
 
@@ -386,6 +369,10 @@ document.getElementById("musik");
 
 
 let halaman=0;
+
+let lock=false;
+
+
 
 
 
@@ -401,19 +388,22 @@ document.getElementById("content").style.display="block";
 document.querySelector(".floating").style.display="flex";
 
 
-document.getElementById("nav").style.display="block";
-
-
-
 musik.play().catch(()=>{});
-
 
 
 }
 
 
 
+
+
+
+
 function nextPage(){
+
+
+if(lock) return;
+
 
 
 if(halaman < 5){
@@ -422,15 +412,25 @@ if(halaman < 5){
 halaman++;
 
 
-document.getElementById("book").style.transform =
-
-"translateX(-"+(halaman*100)+"%)";
+geser();
 
 
 }
 
 
+
+lock=true;
+
+
+setTimeout(()=>{
+
+lock=false;
+
+},600);
+
+
 }
+
 
 
 
@@ -439,10 +439,41 @@ document.getElementById("book").style.transform =
 function prevPage(){
 
 
+if(lock) return;
+
+
+
 if(halaman > 0){
 
 
 halaman--;
+
+
+geser();
+
+
+}
+
+
+lock=true;
+
+
+setTimeout(()=>{
+
+lock=false;
+
+},600);
+
+
+}
+
+
+
+
+
+
+
+function geser(){
 
 
 document.getElementById("book").style.transform =
@@ -453,7 +484,98 @@ document.getElementById("book").style.transform =
 }
 
 
+
+
+
+
+
+
+
+/* SWIPE HP */
+
+
+let startX=0;
+
+
+document.getElementById("book")
+
+.addEventListener("touchstart",function(e){
+
+
+startX=e.touches[0].clientX;
+
+
+});
+
+
+
+
+
+document.getElementById("book")
+
+.addEventListener("touchend",function(e){
+
+
+let endX=e.changedTouches[0].clientX;
+
+
+
+if(startX-endX > 50){
+
+nextPage();
+
 }
+
+
+
+if(endX-startX > 50){
+
+prevPage();
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+/* SCROLL PC */
+
+
+document.addEventListener("wheel",function(e){
+
+
+if(document.getElementById("content").style.display!="block")
+
+return;
+
+
+
+if(e.deltaY > 0){
+
+nextPage();
+
+}
+
+
+else{
+
+prevPage();
+
+}
+
+
+
+});
+
+
+
 
 
 
@@ -471,14 +593,11 @@ document.getElementById("cover").style.display="block";
 document.querySelector(".floating").style.display="none";
 
 
-document.getElementById("nav").style.display="none";
-
-
 
 halaman=0;
 
 
-document.getElementById("book").style.transform="translateX(0)";
+geser();
 
 
 }
@@ -489,5 +608,8 @@ document.getElementById("book").style.transform="translateX(0)";
 
 
 
+
+
 </body>
+
 </html>
